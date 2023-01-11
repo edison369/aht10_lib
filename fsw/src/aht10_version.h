@@ -68,7 +68,7 @@
  * official version. @n See @ref cfsversions for format differences between development and release versions.
  */
 #define AHT10_VERSION_STRING                       \
-    " Sample Lib DEVELOPMENT BUILD " AHT10_VERSION \
+    " Sensor AHT10 DEVELOPMENT BUILD " AHT10_VERSION \
     ", Last Official Release: v1.1.0" /* For full support please use this version */
 
 #endif /* AHT10_VERSION_H */

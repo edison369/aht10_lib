@@ -52,12 +52,8 @@ int read_bytes(int fd, uint16_t i2c_address, uint8_t data_address, uint16_t nr_b
 int set_bytes(uint16_t chip_address, uint8_t **val, int numBytes);
 int sensor_aht10_get_reg_8(uint8_t register_add, uint8_t **buff);
 
-void updateHumidity(void);
-void updateTemperature(void);
-int readMeasurement(uint8_t **buff);
-
 int readStatusRegister(uint8_t **buff);
 uint8_t get_calibration_bit(void);
-void get_busy_bit(void);
+uint8_t get_busy_bit(void);
 
 #endif

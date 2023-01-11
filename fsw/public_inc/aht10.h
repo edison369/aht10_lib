@@ -22,6 +22,9 @@
 #include <unistd.h>
 #include "cfe.h"
 
+static const char bus_path[] = "/dev/i2c-1";
+static const char aht10_path[] = "/dev/i2c-1.aht10-0";
+
 /* list of I2C addresses */
 #define AHT10_ADDRESS_X38                 0x38  //AHT10 I2C address if address pin to GND
 #define AHT10_ADDRESS_X39                 0x39  //AHT10 I2C address, if address pin to Vcc
@@ -105,16 +108,8 @@
 
 typedef enum {
   SENSOR_AHT10_SOFT_RST,
-  SENSOR_AHT10_NORMAL_MODE,
-  SENSOR_AHT10_READ
+  SENSOR_AHT10_NORMAL_MODE
 } sensor_aht10_command;
-
-typedef struct{
-  float sensor_humidity;
-  float sensor_temperature;
-  uint8_t rawData[5];
-  uint8_t status;
-}SENSOR_AHT10_Data_t;
 
 
 /************************************************************************/
@@ -130,11 +125,10 @@ int32 AHT10_Init(void);
 
 int i2c_dev_register_sensor_aht10(const char *bus_path, const char *dev_path);
 int sensor_aht10_begin(int fd);
-int sensor_aht10_read(int fd);
 
 // I2C functions
+int readMeasurement(uint8_t **buff);
 float sensor_aht10_get_temp(void);
-float sensor_aht10_get_humid(void);
 
 
 #endif /* _DEV_I2C_SENSOR_AHT10_H */
